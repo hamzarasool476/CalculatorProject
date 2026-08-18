@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="A modern fully functional scientific calculator with light and dark modes."
+    >
+
+    <title>Advanced Calculator</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main class="app">
+
+        <!-- Calculator -->
+        <section class="calculator" aria-label="Calculator">
+
+            <!-- Header -->
+            <header class="calculator-header">
+                <div class="brand">
+                    <span class="brand-icon">∑</span>
+                    <div>
+                        <h1>Calculator</h1>
+                        <p>Scientific Calculator</p>
+                    </div>
+                </div>
+
+                <button
+                    id="themeToggle"
+                    class="icon-button"
+                    type="button"
+                    aria-label="Toggle theme"
+                    title="Toggle light/dark mode"
+                >
+                    <span id="themeIcon">☾</span>
+                </button>
+            </header>
+
+            <!-- Display -->
+            <section class="display" aria-label="Calculator display">
+
+                <div class="display-top">
+                    <span id="modeIndicator">DEG</span>
+
+                    <button
+                        id="clearHistory"
+                        class="history-clear"
+                        type="button"
+                        title="Clear calculation history"
+                    >
+                        Clear History
+                    </button>
+                </div>
+
+                <div
+                    id="expression"
+                    class="expression"
+                    aria-live="polite"
+                ></div>
+
+                <div
+                    id="result"
+                    class="result"
+                    aria-live="polite"
+                >
+                    0
+                </div>
+
+            </section>
+
+            <!-- Mode Controls -->
+            <div class="mode-controls">
+
+                <div class="angle-mode">
+                    <button
+                        class="mode-button active"
+                        data-angle="DEG"
+                        type="button"
+                    >
+                        DEG
+                    </button>
+
+                    <button
+                        class="mode-button"
+                        data-angle="RAD"
+                        type="button"
+                    >
+                        RAD
+                    </button>
+                </div>
+
+                <button
+                    id="memoryIndicator"
+                    class="memory-indicator"
+                    type="button"
+                    title="Memory"
+                >
+                    M
+                </button>
+
+            </div>
+
+            <!-- Calculator Buttons -->
+            <div class="keypad">
+
+                <!-- Row 1 -->
+                <button class="key function" data-action="memory-clear">MC</button>
+                <button class="key function" data-action="memory-recall">MR</button>
+                <button class="key function" data-action="memory-add">M+</button>
+                <button class="key function" data-action="memory-subtract">M−</button>
+                <button class="key function" data-action="backspace">⌫</button>
+
+                <!-- Row 2 -->
+                <button class="key function" data-value="(">(</button>
+                <button class="key function" data-value=")">)</button>
+                <button class="key function" data-action="percentage">%</button>
+                <button class="key function" data-action="clear-entry">CE</button>
+                <button class="key danger" data-action="clear">AC</button>
+
+                <!-- Row 3 -->
+                <button class="key scientific" data-function="sin">sin</button>
+                <button class="key scientific" data-function="cos">cos</button>
+                <button class="key scientific" data-function="tan">tan</button>
+                <button class="key scientific" data-function="log">log</button>
+                <button class="key operator" data-value="÷">÷</button>
+
+                <!-- Row 4 -->
+                <button class="key scientific" data-function="asin">sin⁻¹</button>
+                <button class="key scientific" data-function="acos">cos⁻¹</button>
+                <button class="key scientific" data-function="atan">tan⁻¹</button>
+                <button class="key scientific" data-function="ln">ln</button>
+                <button class="key operator" data-value="×">×</button>
+
+                <!-- Row 5 -->
+                <button class="key scientific" data-function="sqrt">√</button>
+                <button class="key scientific" data-function="square">x²</button>
+                <button class="key scientific" data-function="cube">x³</button>
+                <button class="key scientific" data-function="factorial">x!</button>
+                <button class="key operator" data-value="−">−</button>
+
+                <!-- Row 6 -->
+                <button class="key scientific" data-function="pi">π</button>
+                <button class="key scientific" data-function="e">e</button>
+                <button class="key scientific" data-function="inverse">1/x</button>
+                <button class="key scientific" data-function="power">xʸ</button>
+                <button class="key operator" data-value="+">+</button>
+
+                <!-- Row 7 -->
+                <button class="key number" data-value="7">7</button>
+                <button class="key number" data-value="8">8</button>
+                <button class="key number" data-value="9">9</button>
+                <button class="key number" data-value=".">.</button>
+                <button class="key equals" data-action="calculate">=</button>
+
+                <!-- Row 8 -->
+                <button class="key number" data-value="4">4</button>
+                <button class="key number" data-value="5">5</button>
+                <button class="key number" data-value="6">6</button>
+                <button class="key number" data-value="00">00</button>
+                <button class="key number" data-value="0">0</button>
+
+            </div>
+
+            <!-- Keyboard Hint -->
+            <footer class="calculator-footer">
+                <span>⌨ Keyboard supported</span>
+                <span>•</span>
+                <span>Scientific mode</span>
+            </footer>
+
+        </section>
+
+        <!-- History -->
+        <aside class="history-panel">
+
+            <div class="history-header">
+                <div>
+                    <h2>History</h2>
+                    <p>Your calculations</p>
+                </div>
+
+                <span id="historyCount" class="history-count">0</span>
+            </div>
+
+            <div
+                id="historyList"
+                class="history-list"
+            >
+                <div class="empty-history">
+                    <span>⌁</span>
+                    <p>No calculations yet</p>
+                    <small>Your calculations will appear here.</small>
+                </div>
+            </div>
+
+        </aside>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
